@@ -5,23 +5,23 @@ use Analog\Handler\File;
 
 date_default_timezone_set('Etc/GMT-8');
 
+define('ROOT_DIR', dirname((dirname(__FILE__))));
+define('APP_NAME', substr(strrchr(rtrim(ROOT_DIR, DIRECTORY_SEPARATOR), DIRECTORY_SEPARATOR), 1));
+define('TIMESTAMP', time());
+
 // vender lib autoload
-require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/lib/SplClassLoader.php';
 
 // self lib autoload
 $classLoader = new SplClassLoader('Redstar', __DIR__.'/../');
 $classLoader->register();
 
-define('ROOT_DIR', dirname((dirname(__FILE__))));
-define('APP_NAME', substr(strrchr(rtrim(ROOT_DIR, DIRECTORY_SEPARATOR), DIRECTORY_SEPARATOR), 1));
-define('TIMESTAMP', time());
-
 $globalConfig = \Redstar\Core\Conf::getConf('global');
 foreach($globalConfig as $k => $v) {
     define(strtoupper($k), $v);
 }
 
+require_once VENDOR_DIR. '/autoload.php';
 // error handler
 /*
 set_error_handler(function($code, $message, $file, $line) {
