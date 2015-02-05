@@ -13,16 +13,16 @@ class Conf
 
     private static function loadConf($name)
     {
-        $app_conf = ROOT_DIR.'/../local_conf/'.APP_NAME.'/'.$name.'.php';
-        $root_conf = ROOT_DIR.'/../local_conf/'.$name.'.php';
-        $app_common_conf = __DIR__.'/../conf/'.$name.'.php';
+        $local_app_conf = LOCAL_APP_CONF_DIR.'/'.$name.'.php';
+        $local_common_conf = LOCAL_COMMON_CONF_DIR.'/'.$name.'.php';
+        $app_conf = APP_CONF_DIR.'/'.$name.'.php';
 
-        if(file_exists($app_conf)) {
+        if(file_exists($local_app_conf)) {
+            self::$ins[$name] = include $local_app_conf;
+        } else if (file_exists($local_common_conf)) {
+            self::$ins[$name] = include $local_common_conf;
+        } else if (file_exists($app_conf)) {
             self::$ins[$name] = include $app_conf;
-        } else if (file_exists($root_conf)) {
-            self::$ins[$name] = include $root_conf;
-        } else if (file_exists($app_common_conf)) {
-            self::$ins[$name] = include $app_common_conf;
         } else {
             throw new \Exception('no app conf find!');
         }

@@ -1,6 +1,6 @@
 {
     "config": {
-        "vendor-dir": "../../default_vendor"
+        "vendor-dir": "../../redstar/vendor/xiao"
     },
     "repositories": [
         {"type": "composer", "url": "http://pkg.phpcomposer.com/repo/packagist/"},

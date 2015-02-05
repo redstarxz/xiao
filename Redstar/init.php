@@ -6,7 +6,12 @@ use Analog\Handler\File;
 date_default_timezone_set('Etc/GMT-8');
 
 define('ROOT_DIR', dirname((dirname(__FILE__))));
+define('REDSTAR_DIR', dirname(__FILE__));
+define('APP_CONF_DIR', REDSTAR_DIR.'/conf/');
 define('APP_NAME', substr(strrchr(rtrim(ROOT_DIR, DIRECTORY_SEPARATOR), DIRECTORY_SEPARATOR), 1));
+define('REDSTAR_DATA_DIR', ROOT_DIR.'/../redstar/');
+define('LOCAL_COMMON_CONF_DIR', REDSTAR_DATA_DIR.'/local_conf/common');
+define('LOCAL_APP_CONF_DIR', REDSTAR_DATA_DIR.'/local_conf/'.APP_NAME);
 define('TIMESTAMP', time());
 
 // vender lib autoload
