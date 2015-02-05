@@ -1,4 +1,11 @@
 {
+    "config": {
+        "vendor-dir": "../../default_vendor"
+    },
+    "repositories": [
+        {"type": "composer", "url": "http://pkg.phpcomposer.com/repo/packagist/"},
+        {"packagist": false}
+    ],
     "require": {
         "php": ">=5.3.28",
         "catfan/Medoo" : "0.9.6.2",
